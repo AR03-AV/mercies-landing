@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercies — For a closer walk with Him</title>
+<meta name="description" content="Mercies is a quiet place to pray — a Prayer Wall, daily prayers, and Scripture, all in one calm space.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF7EF;
+    --white: #FFFFFF;
+    --ink: #2B2A26;
+    --muted: #6B6B63;
+    --sage: #7C9070;
+    --sage-light: #E3EEDC;
+    --gold: #C9A227;
+    --border: #E4DCC8;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Nunito', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .monogram {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    border: 1.5px solid var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 56px);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--sage);
+    margin: 0 0 40px;
+  }
+
+  .verse {
+    max-width: 480px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+
+  .verse-ref {
+    font-size: 14px;
+    color: var(--sage);
+    letter-spacing: 0.02em;
+    margin: 0 0 48px;
+  }
+
+  .stores {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 28px;
+    background: var(--sage);
+    color: white;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    transition: opacity 0.15s ease;
+  }
+
+  .store-btn:hover { opacity: 0.9; }
+
+  .store-btn.disabled {
+    background: var(--white);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .redirecting {
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 56px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  footer a {
+    color: var(--sage);
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cream: #1C1B18;
+      --white: #26251F;
+      --ink: #F0EBDD;
+      --muted: #A8A69C;
+      --border: #3A382F;
+      --sage-light: #2E3A2A;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="monogram">M</div>
+    <h1>Mercies</h1>
+    <p class="tagline">For a closer walk with Him.</p>
+
+    <p class="verse">"Come to me, all who labor and are heavy laden, and I will give you rest."</p>
+    <p class="verse-ref">— Matthew 11:28</p>
+
+    <div class="stores" id="stores">
+      <!-- Populated by JS below based on device -->
+    </div>
+
+    <p class="redirecting" id="redirect-note" style="display:none;">Opening the App Store…</p>
+
+    <footer>
+      A quiet place to pray. &nbsp;·&nbsp;
+      <a href="mailto:help@support.merciesapp.com">Contact</a>
+    </footer>
+  </div>
+
+  <script>
+    // ─── Configure real store URLs here once available ───
+    const APP_STORE_URL = null; // e.g. "https://apps.apple.com/app/id0000000000"
+    const PLAY_STORE_URL = null; // e.g. "https://play.google.com/store/apps/details?id=com.abide.app"
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isAndroid = /android/i.test(ua);
+
+    const storesEl = document.getElementById('stores');
+    const redirectNote = document.getElementById('redirect-note');
+
+    function storeButton(label, url) {
+      if (url) {
+        return `<a class="store-btn" href="${url}">${label}</a>`;
+      }
+      return `<span class="store-btn disabled">${label} — coming soon</span>`;
+    }
+
+    if (isIOS) {
+      storesEl.innerHTML = storeButton('Get it on the App Store', APP_STORE_URL);
+      if (APP_STORE_URL) {
+        redirectNote.style.display = 'block';
+        setTimeout(() => { window.location.href = APP_STORE_URL; }, 900);
+      }
+    } else if (isAndroid) {
+      storesEl.innerHTML = storeButton('Get it on Google Play', PLAY_STORE_URL);
+      if (PLAY_STORE_URL) {
+        redirectNote.textContent = 'Opening Google Play…';
+        redirectNote.style.display = 'block';
+        setTimeout(() => { window.location.href = PLAY_STORE_URL; }, 900);
+      }
+    } else {
+      // Desktop — show both, no auto-redirect
+      storesEl.innerHTML =
+        storeButton('App Store', APP_STORE_URL) +
+        storeButton('Google Play', PLAY_STORE_URL);
+    }
+  </script>
+</body>
+</html>
