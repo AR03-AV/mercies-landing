@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Delete your Mercies account</title>
+  <meta name="description" content="How to delete your Mercies account and what happens to your data." />
+  <style>
+    :root {
+      --cream: #FDFAF5;
+      --sage: #A3B899;
+      --sage-deep: #8AA17F;
+      --sage-green: #7C9E8A;
+      --gold: #E5C07B;
+      --gold-deep: #C9A35F;
+      --ink: #2C2C2C;
+      --muted: #6B6B6B;
+      --white: #FFFFFF;
+      --coral: #C0654F;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(180deg, #F5F0E6 0%, var(--cream) 100%);
+      border-bottom: 1px solid #E8E0D4;
+      padding: 2.5rem 1.25rem 2rem;
+      text-align: center;
+    }
+    .brand {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--sage-deep);
+      letter-spacing: 0.02em;
+      margin: 0 0 0.5rem;
+    }
+    header h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin: 0.75rem 0 0.35rem;
+      color: var(--ink);
+    }
+    header p {
+      margin: 0 auto;
+      max-width: 36rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    main {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3.5rem;
+    }
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.45rem;
+      color: var(--sage-deep);
+      margin: 2rem 0 0.75rem;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.35rem;
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.4rem;
+      color: var(--ink);
+    }
+    p, li { font-size: 1rem; }
+    ul { padding-left: 1.25rem; }
+    li { margin: 0.35rem 0; }
+    .card {
+      background: var(--white);
+      border: 1px solid #E8E0D4;
+      border-radius: 12px;
+      padding: 1.15rem 1.25rem;
+      margin: 1rem 0;
+      box-shadow: 0 1px 0 rgba(138, 161, 127, 0.08);
+    }
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 0.85rem 0.85rem 0.85rem 3rem;
+      margin: 0.5rem 0;
+      background: var(--white);
+      border-radius: 10px;
+      border: 1px solid #E8E0D4;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0.75rem;
+      top: 0.85rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background: var(--sage-green);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .note {
+      background: #FBF0E0;
+      border: 1px solid #E8C99A;
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+      color: #8A6A3C;
+      font-size: 0.95rem;
+    }
+    a {
+      color: var(--sage-deep);
+      font-weight: 600;
+    }
+    a:hover { color: var(--gold-deep); }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="brand">Mercies</p>
+    <h1>Delete your account</h1>
+    <p>How to remove your Mercies account in the app, what is deleted, and how to ask us for help if you cannot sign in.</p>
+  </header>
+
+  <main>
+    <h2>Delete in the app</h2>
+    <ol class="steps">
+      <li>Open Mercies and go to <strong>Preferences</strong>.</li>
+      <li>Tap <strong>Delete Account</strong>.</li>
+      <li>Optional reason sheet: choose why you are leaving (Not using it enough, Found another app, Subscription cost, Hard to use, or Other), add a short detail if you choose Other, then tap <strong>Continue</strong> — or tap <strong>Skip</strong>.</li>
+      <li>On the confirmation sheet, read what will be deleted. If you have a paid plan, cancel it first with <strong>Manage subscription</strong> (deleting the account does not cancel App Store or Google Play billing).</li>
+      <li>Tap <strong>Delete my account</strong> to confirm. This cannot be undone.</li>
+    </ol>
+
+    <h2>What is deleted</h2>
+    <div class="card">
+      <ul>
+        <li>Your account and personal data (blessings, notes, saved verses, settings, Chat and Study messages, Personalized Quiz history and account-linked quiz cache, custom highlight topics, blocks)</li>
+        <li>Your Prayer Wall posts and prays</li>
+        <li>Your group content (removed under our group cleanup rules) and your membership</li>
+        <li>Your push notification token</li>
+        <li>Your sign-in account (it cannot be recovered)</li>
+      </ul>
+    </div>
+
+    <h2>What may be kept</h2>
+    <div class="card">
+      <ul>
+        <li>Prayer Wall reports you filed, with your account link removed (anonymized), so we can keep the community safe</li>
+        <li>For “Report this reply” records: the question and note are cleared; the reply text may be kept for safety review</li>
+        <li>Shared answer caches for common first Chat and Study questions (not linked to any account)</li>
+      </ul>
+    </div>
+
+    <div class="note">
+      Deleting your Mercies account does <strong>not</strong> cancel an App Store or Google Play subscription. Cancel that separately in your device subscription settings before you delete, if you have a paid plan.
+    </div>
+
+    <h2>If you cannot sign in</h2>
+    <p>
+      Email <a href="mailto:help@support.merciesapp.com">help@support.merciesapp.com</a>
+      from the email address on your Mercies account. Ask us to delete the account and include enough detail for us to find it.
+      We will verify the request and complete deletion within
+      <strong>30 days</strong>.
+    </p>
+
+    <h2>Privacy Policy</h2>
+    <p>
+      For the full description of what we collect and how deletion works, see the
+      <a href="https://merciesapp.com/privacy">Privacy Policy</a>
+      (also available in the Mercies app under Preferences → Privacy Policy).
+    </p>
+  </main>
+
+  <footer>
+    Mercies · help@support.merciesapp.com
+  </footer>
+</body>
+</html>
+

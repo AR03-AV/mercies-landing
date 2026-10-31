@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Reset your Mercies password</title>
+  <style>
+:root {
+  --cream: #FAF7F2;
+  --sage: #7C9E8A;
+  --sage-deep: #5F7F6C;
+  --sage-light: #E8F0EB;
+  --ink: #2C2C2C;
+  --muted: #7D746D;
+  --muted-light: #A8A19B;
+  --white: #FFFFFF;
+  --wrong: #B85C4A;
+  --wrong-bg: #F8EBE7;
+  --beige: #EDE6DC;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Nunito, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.45;
+  min-height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.wrap {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+  flex: 1;
+}
+.brand {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  font-weight: 700;
+  margin: 0 0 18px;
+}
+h1 {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+.lead {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 22px;
+}
+.card {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(44, 44, 44, 0.06);
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.field { margin-bottom: 14px; }
+.input-row {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+input[type="password"], input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid var(--beige);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-family: inherit;
+  background: var(--cream);
+  color: var(--ink);
+}
+input:focus {
+  outline: 2px solid var(--sage);
+  outline-offset: 1px;
+}
+.toggle {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--beige);
+  border-radius: 12px;
+  background: var(--cream);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 10px;
+}
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 8px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--sage);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 12px 18px;
+}
+.btn:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+.msg {
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin: 0 0 14px;
+}
+.msg-error { background: var(--wrong-bg); color: var(--wrong); }
+.msg-ok { background: var(--sage-light); color: var(--sage-deep); }
+.hidden { display: none !important; }
+.footer {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-light);
+}
+.footer a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--beige);
+  border-top-color: var(--sage);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 8px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.panel-title {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Mercies</p>
+    <p class="brand">Choose a new password</p>
+
+    <div id="panel-missing" class="card hidden" role="status">
+      <h1 class="panel-title">This link has expired</h1>
+      <p class="lead">This link has expired or was already used. Open Mercies, tap Forgot password and request a new one.</p>
+    </div>
+
+    <div id="panel-expired" class="card hidden" role="status">
+      <h1 class="panel-title">This link has expired</h1>
+      <p class="lead">This link has expired or was already used. Open Mercies, tap Forgot password and request a new one.</p>
+    </div>
+
+    <div id="panel-success" class="card hidden" role="status">
+      <h1 class="panel-title">Password updated</h1>
+      <p class="msg msg-ok">Your password is set. Open Mercies and log in.</p>
+    </div>
+
+    <div id="panel-form" class="card hidden">
+      <p class="lead">Enter a new password for your Mercies account.</p>
+      <div id="form-error" class="msg msg-error hidden" role="alert"></div>
+      <form id="reset-form" novalidate>
+        <div class="field">
+          <label for="password">New password</label>
+          <div class="input-row">
+            <input id="password" name="password" type="password" autocomplete="new-password" required minlength="6" />
+            <button type="button" class="toggle" id="toggle-password" aria-pressed="false" aria-label="Show password">Show</button>
+          </div>
+          <p class="hint" id="strength-hint">At least 6 characters.</p>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <div class="input-row">
+            <input id="confirm" name="confirm" type="password" autocomplete="new-password" required minlength="6" />
+            <button type="button" class="toggle" id="toggle-confirm" aria-pressed="false" aria-label="Show confirm password">Show</button>
+          </div>
+        </div>
+        <button type="submit" class="btn" id="submit-btn">Set new password</button>
+      </form>
+      <div id="loading" class="hidden" aria-live="polite" style="text-align:center;margin-top:16px;">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="hint">Saving your new password…</p>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <a href="/mercies-privacy.html">Privacy Policy</a>
+    &nbsp;·&nbsp;
+    <a href="/mercies-terms.html">Terms</a>
+  </footer>
+  <script>
+(function () {
+  var SUPABASE_URL = "https://urvhxvodpvrqwxbnqpwb.supabase.co";
+  var ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVydmh4dm9kcHZycXd4Ym5xcHdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5NDg0MzksImV4cCI6MjA5NzUyNDQzOX0.Y4NNKWEtCgN1hxJm0Ko333CBF1HwJmHVmzZ4S5jxzak";
+  var MIN_LEN = 6;
+
+  function qs(name) {
+    try {
+      return new URLSearchParams(window.location.search).get(name);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function show(id) {
+    ["panel-form", "panel-success", "panel-expired", "panel-missing"].forEach(function (pid) {
+      document.getElementById(pid).classList.toggle("hidden", pid !== id);
+    });
+  }
+
+  function setError(msg) {
+    var el = document.getElementById("form-error");
+    if (!msg) {
+      el.classList.add("hidden");
+      el.textContent = "";
+      return;
+    }
+    el.textContent = msg;
+    el.classList.remove("hidden");
+  }
+
+  function validatePassword(pw, confirm) {
+    if (!pw || !confirm) return "Please fill in both password fields.";
+    if (pw.length < MIN_LEN) return "Password must be at least " + MIN_LEN + " characters.";
+    if (pw !== confirm) return "Passwords don't match.";
+    return null;
+  }
+
+  function wireToggle(inputId, btnId) {
+    var input = document.getElementById(inputId);
+    var btn = document.getElementById(btnId);
+    btn.addEventListener("click", function () {
+      var showPw = input.type === "password";
+      input.type = showPw ? "text" : "password";
+      btn.textContent = showPw ? "Hide" : "Show";
+      btn.setAttribute("aria-pressed", showPw ? "true" : "false");
+      btn.setAttribute("aria-label", showPw ? "Hide password" : "Show password");
+    });
+  }
+
+  var tokenHash = qs("token_hash");
+  var type = qs("type");
+
+  // Strip secrets from the address bar immediately (do not verify yet —
+  // scanners that only open the link must not consume the recovery token).
+  if (window.history && window.history.replaceState) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  if (!tokenHash || type !== "recovery") {
+    show("panel-missing");
+    return;
+  }
+
+  show("panel-form");
+  wireToggle("password", "toggle-password");
+  wireToggle("confirm", "toggle-confirm");
+
+  var form = document.getElementById("reset-form");
+  var submitBtn = document.getElementById("submit-btn");
+  var loading = document.getElementById("loading");
+
+  form.addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    setError(null);
+    var pw = document.getElementById("password").value;
+    var confirm = document.getElementById("confirm").value;
+    var ruleErr = validatePassword(pw, confirm);
+    if (ruleErr) {
+      setError(ruleErr);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    loading.classList.remove("hidden");
+
+    try {
+      var verifyRes = await fetch(SUPABASE_URL + "/auth/v1/verify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: ANON_KEY,
+        },
+        body: JSON.stringify({ type: "recovery", token_hash: tokenHash }),
+      });
+      var verifyBody = null;
+      try { verifyBody = await verifyRes.json(); } catch (e) { verifyBody = null; }
+
+      if (!verifyRes.ok) {
+        show("panel-expired");
+        return;
+      }
+
+      var accessToken = verifyBody && (verifyBody.access_token || (verifyBody.data && verifyBody.data.access_token));
+      if (!accessToken) {
+        show("panel-expired");
+        return;
+      }
+
+      var updateRes = await fetch(SUPABASE_URL + "/auth/v1/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: ANON_KEY,
+          Authorization: "Bearer " + accessToken,
+        },
+        body: JSON.stringify({ password: pw }),
+      });
+
+      if (!updateRes.ok) {
+        var updateBody = null;
+        try { updateBody = await updateRes.json(); } catch (e) { updateBody = null; }
+        var msg = (updateBody && (updateBody.msg || updateBody.error_description || updateBody.message)) || "";
+        if (/password|characters|weak/i.test(String(msg))) {
+          show("panel-form");
+          setError("Password must be at least " + MIN_LEN + " characters.");
+          submitBtn.disabled = false;
+          loading.classList.add("hidden");
+          return;
+        }
+        show("panel-form");
+        setError("Something went wrong. Please check your connection and try again.");
+        submitBtn.disabled = false;
+        loading.classList.add("hidden");
+        return;
+      }
+
+      show("panel-success");
+    } catch (err) {
+      show("panel-form");
+      setError("Something went wrong. Please check your connection and try again.");
+      submitBtn.disabled = false;
+      loading.classList.add("hidden");
+    }
+  });
+})();
+  </script>
+</body>
+</html>
