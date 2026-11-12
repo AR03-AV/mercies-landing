@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercies – a quiet place to walk with Him</title>
+<meta name="description" content="Mercies is a faith app for daily Scripture, guided prayer, Bible study, memorizing verses and a private prayer community.">
+<link rel="icon" href="img/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mercies – a quiet place to walk with Him">
+<meta property="og:description" content="Daily Scripture, guided prayer, Bible study and a private prayer community.">
+<meta property="og:url" content="https://merciesapp.com/">
+<meta property="og:image" content="https://merciesapp.com/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#1f4a3a; --green:#2d6350; --green-dark:#17372b;
+  --gold:#e5c07b; --gold-deep:#c9a35f;
+  --cream:#fdfaf5; --cream-2:#f4eee2; --sage:#a3b899; --sage-deep:#7c9e8a;
+  --ink:#332f2c; --ink-soft:#6b645d;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;transition:background .3s,color .3s;color:var(--cream)}
+nav.solid{background:rgba(253,250,245,.92);backdrop-filter:blur(8px);color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.01em}
+.brand img{width:30px;height:30px;border-radius:8px}
+nav .links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
+nav .links a{text-decoration:none;opacity:.85}
+nav .links a:hover{opacity:1}
+.pill{display:inline-block;background:var(--gold);color:#2a2418!important;padding:10px 20px;border-radius:999px;font-weight:700;text-decoration:none;opacity:1!important;transition:transform .2s,background .2s}
+.pill:hover{transform:translateY(-1px);background:#efcf92}
+@media(max-width:640px){nav .links a:not(.pill){display:none}nav{padding:12px 18px}.brand{font-size:23px}.brand img{width:26px;height:26px}nav .pill{padding:7px 15px;font-size:14px}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;align-items:flex-start;background:radial-gradient(120% 90% at 50% 18%,var(--green) 0%,var(--green-deep) 55%,var(--green-dark) 100%);color:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;padding:110px 24px 0;overflow:hidden;flex-direction:column;justify-content:flex-start;align-items:center}
+.peek{--ph:min(300px,62vw);position:relative;z-index:1;width:100%;height:var(--ph);overflow:hidden;margin-top:48px;display:flex;justify-content:center;align-items:flex-start}
+.fan{display:flex;justify-content:center;align-items:flex-start;transform:translateY(calc((1 - var(--p,0)) * var(--ph) * .7));will-change:transform}
+.fp{--w:min(240px,40vw);width:var(--w);flex:none;padding:6px 6px 0;background:#17372b;border-radius:30px 30px 0 0;box-shadow:0 -8px 50px rgba(229,192,123,.18);position:relative}
+.fp img{display:block;width:100%;aspect-ratio:700/1375;object-fit:cover;object-position:top;border-radius:24px 24px 0 0}
+.f-c{z-index:3}
+.f-m{--w:min(190px,32vw);z-index:2;margin:0 -16px;margin-top:34px}.f-m.l{transform:rotate(-5deg)}.f-m.r{transform:rotate(5deg)}
+.f-o{--w:min(150px,25vw);z-index:1;margin:0 -10px;margin-top:70px}.f-o.l{transform:rotate(-10deg)}.f-o.r{transform:rotate(10deg)}
+@media(max-width:640px){
+ .peek{margin-left:-24px;margin-right:-24px;width:calc(100% + 48px)}
+ .fan{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;justify-content:flex-start;gap:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .fan::-webkit-scrollbar{display:none}
+ .fan::before,.fan::after{content:"";flex:0 0 calc(50% - 23vw - 8px)}
+ .fp,.f-m,.f-o,.f-c{--w:46vw;margin:0 -8px;scroll-snap-align:center;flex:none;box-shadow:none;transform-origin:50% 100%;will-change:transform}
+ .f-m.l,.f-m.r,.f-o.l,.f-o.r{transform:none}
+ .f-o{display:block}}
+.xx img{width:100%;aspect-ratio:700/1375;object-fit:cover;object-position:top;border-radius:28px 28px 0 0}
+.hero::after{pointer-events:none;content:"";position:absolute;left:0;right:0;bottom:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream))}
+.glow{position:absolute;left:50%;top:38%;width:70vmin;height:70vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(229,192,123,.35),rgba(229,192,123,0) 65%);animation:breathe 12s ease-in-out infinite}
+.ring{position:absolute;left:50%;top:38%;border:1px solid rgba(229,192,123,.35);border-radius:50%;transform:translate(-50%,-50%);animation:ripple 9s ease-out infinite;opacity:0}
+.ring:nth-child(3){animation-delay:3s}.ring:nth-child(4){animation-delay:6s}
+@keyframes ripple{0%{width:10vmin;height:10vmin;opacity:.7}100%{width:120vmin;height:120vmin;opacity:0}}
+@keyframes breathe{0%,100%{opacity:.75;transform:translate(-50%,-50%) scale(1)}50%{opacity:.95;transform:translate(-50%,-50%) scale(1.04)}}
+.hero-inner{position:relative;z-index:2;max-width:880px}
+.eyebrow{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:26px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,8.4vw,104px);line-height:1.02;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold);font-weight:400}
+.w{display:inline-block;opacity:0;transform:translateY(18px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.chip{display:inline-flex;vertical-align:middle;width:.62em;height:.62em;margin:0 .12em;border-radius:50%;background:rgba(229,192,123,.18);border:1px solid rgba(229,192,123,.55);align-items:center;justify-content:center}
+.chip svg{width:56%;height:56%;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sub{margin:30px auto 0;max-width:560px;font-size:clamp(17px,2vw,20px);color:rgba(253,250,245,.82);opacity:0;animation:rise 1s 1.5s forwards}
+.cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;opacity:0;animation:rise 1s 1.8s forwards}
+.cta small{display:block;width:100%;font-size:14px;color:rgba(253,250,245,.65)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#2a2418;font-weight:700;padding:15px 28px;border-radius:999px;text-decoration:none;font-size:17px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#efcf92}
+.btn svg{width:20px;height:20px}
+.scrollhint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:translate(-50%,-6px);opacity:0}40%{opacity:1}100%{transform:translate(-50%,10px);opacity:0}}
+
+/* story */
+.story{position:relative;padding:0 0 40px}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.stage{position:sticky;top:0;height:100svh;display:flex;align-items:center;justify-content:center}
+.phone{position:relative;width:min(300px,34vw);aspect-ratio:700/1375;border-radius:42px;background:#17372b;padding:8px;box-shadow:0 40px 80px -20px rgba(23,55,43,.45),0 0 0 1px rgba(255,255,255,.08) inset;transform:perspective(1400px) rotateY(var(--ry,0deg)) rotateZ(var(--rz,-2deg)) translateY(var(--ty,0px));will-change:transform}
+
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-9px) rotate(.8deg)}}
+.phone.swap{animation:swap 1.1s cubic-bezier(.25,.8,.25,1)}
+@keyframes swap{0%{translate:0 26px;rotate:-5deg}100%{translate:0 0;rotate:0deg}}
+.phone .screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--cream)}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.03);transition:opacity .6s,transform .9s}
+.phone img.on{transform:none}
+.phone img.on{opacity:1}
+.halo{position:absolute;width:min(520px,60vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(229,192,123,.28),transparent 68%);z-index:-1}
+.steps .step{min-height:80svh;transition:opacity .5s;display:flex;flex-direction:column;justify-content:center;max-width:460px}
+.step .num{font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:20px;margin-bottom:10px}
+.step h2{font-family:var(--serif);font-weight:500;font-size:clamp(36px,4.6vw,58px);line-height:1.06;margin-bottom:18px}
+.step h2 em{color:var(--gold-deep);font-weight:400}
+.step p{color:var(--ink-soft);font-size:18px}
+.step .inline-shot{display:none}
+@media(min-width:861px){.step{opacity:.28}.step.active{opacity:1}.steps{padding:0 0 10svh}}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{background:rgba(163,184,153,.25);color:#46604f;padding:6px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.pick button{font:inherit;font-weight:700;font-size:14px;border:0;cursor:pointer;background:rgba(163,184,153,.25);color:#46604f;padding:8px 18px;border-radius:999px;transition:background .2s,color .2s}
+.pick button.sel{background:var(--green-deep);color:var(--cream)}
+.pair{display:none}
+@media(max-width:860px){.pair{display:flex;gap:14px;justify-content:center;margin-top:30px}.pair .inline-shot{margin:0;width:46%}}
+.subdesc{margin-top:18px;min-height:5.2em;color:var(--ink);font-size:17px;border-left:2px solid var(--gold);padding-left:14px}
+.gallery{display:none}
+@media(max-width:860px){.pick,.subdesc{display:none}
+ .gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:28px -24px 0;padding:0 24px 8px;-webkit-overflow-scrolling:touch}
+ .gallery figure{flex:0 0 74%;scroll-snap-align:center;text-align:center}
+ .gallery img{width:86%!important;display:block;margin:0 auto}
+ .gallery img{width:100%;aspect-ratio:700/1375;object-fit:cover;object-position:top;border-radius:30px;box-shadow:0 18px 30px -12px rgba(23,55,43,.35);border:5px solid var(--green-dark);background:var(--cream)}
+ .gallery figcaption{margin-top:18px;padding:0 6px}
+ .gallery figcaption b{display:block;font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1;color:var(--ink);margin-bottom:8px}
+ .gallery figcaption b em{color:var(--gold-deep);font-weight:400}
+ .gallery figcaption span{display:block;font-size:15.5px;color:var(--ink-soft);line-height:1.55}
+ .step.has-gallery h2,.step.has-gallery .lead{display:none}
+ .step.has-gallery .num{font-family:var(--serif);font-style:normal;font-weight:600;font-size:30px;color:var(--gold-deep);text-align:center;margin-bottom:6px}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* soft floating card */
+.note{margin-top:26px;background:#fff;border-radius:20px;padding:18px 22px;box-shadow:0 14px 40px -12px rgba(51,47,44,.18);font-size:16px;max-width:340px;border:1px solid rgba(201,163,95,.18)}
+.note b{font-family:var(--serif);font-size:21px;font-weight:600;display:block;margin-bottom:4px}
+
+@media(max-width:860px){
+  .story-grid{grid-template-columns:minmax(0,1fr);gap:0}.steps{min-width:0}
+  .stage{display:none}
+  .steps .step{min-height:auto;padding:56px 0;max-width:none}
+  .step .inline-shot{display:block;width:min(260px,70%);aspect-ratio:700/1375;object-fit:cover;object-position:top;margin:30px auto 0;filter:drop-shadow(0 24px 30px rgba(23,55,43,.3));border-radius:36px}
+}
+
+/* trust */
+.trust{background:var(--cream-2);padding:74px 0;text-align:center}
+.trust h3{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4vw,44px);margin-bottom:36px}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px;max-width:1000px;margin:0 auto}
+.trust-grid div{padding:22px;background:var(--cream);border-radius:20px;border:1px solid rgba(201,163,95,.2)}
+.trust-grid b{display:block;font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:6px;color:var(--green-deep)}
+.trust-grid span{font-size:15px;color:var(--ink-soft)}
+
+
+.promise{background:linear-gradient(180deg,var(--cream) 0,var(--cream-2) 100%);padding:110px 0}
+.promise-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+.promise .eyebrow{color:var(--gold-deep);margin-bottom:14px}
+.promise h3{font-family:var(--serif);font-weight:500;font-size:clamp(44px,6vw,80px);line-height:1;margin-bottom:18px}
+.promise h3 em{color:var(--gold-deep);font-weight:400}
+.promise-head>p:not(.eyebrow){font-size:19px;color:var(--ink-soft);max-width:380px}
+.floaters{position:relative;height:340px;margin-top:34px}
+.fl{position:absolute;background:#fff;border-radius:18px;padding:13px 18px;font-size:15px;box-shadow:0 14px 34px -12px rgba(51,47,44,.22);border:1px solid rgba(201,163,95,.2);width:max-content;max-width:225px;animation:floatY 7s ease-in-out infinite}
+.f1{left:0;top:0}.f2{left:50%;top:26px;animation-delay:-2s;animation-duration:8s}.f3{left:0;top:86px;animation-delay:-4s}
+.f4{left:50%;top:112px;animation-delay:-1s;animation-duration:9s}.f5{left:0;top:172px;animation-delay:-5s;animation-duration:8s}
+.f6{left:50%;top:200px;animation-delay:-3s}.f7{left:0;top:258px;animation-delay:-6s;animation-duration:9s}.f8{left:50%;top:286px;animation-delay:-2.5s;animation-duration:7.5s}
+@media(max-width:560px){.f5,.f6,.f7,.f8{display:none}.floaters{height:250px}.fl{max-width:46%;font-size:14px;padding:11px 14px}
+.f1{top:0}.f2{top:36px}.f3{top:104px}.f4{top:140px}.f5{top:208px}.f6{top:244px}.f7{top:312px}.f8{top:348px}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.promise-list{list-style:none}
+.promise-list li{display:flex;gap:26px;align-items:baseline;padding:30px 0;border-top:1px solid rgba(201,163,95,.45)}
+.promise-list li:last-child{border-bottom:1px solid rgba(201,163,95,.45)}
+.promise-list span{font-family:var(--serif);font-style:italic;color:var(--gold-deep);font-size:24px;min-width:34px}
+.promise-list b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.1;margin-bottom:6px}
+.promise-list p{color:var(--ink-soft);font-size:17px}
+@media(max-width:860px){.promise-grid{grid-template-columns:1fr;gap:40px}.promise{padding:80px 0}}
+@media(prefers-reduced-motion:reduce){.fl{animation:none}}
+
+
+.voices{background:var(--cream);padding:100px 0 110px;text-align:center}
+.voices .eyebrow{color:var(--gold-deep);margin-bottom:14px}
+.voices h3{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5vw,64px);line-height:1.05;margin-bottom:46px}
+.voices h3 em{color:var(--gold-deep);font-weight:400}
+.voice-wrap{position:relative}
+.voice-grid{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:10px 4px 26px;text-align:left;scrollbar-width:none}
+.voice-grid::-webkit-scrollbar{display:none}
+.vnav{position:absolute;top:42%;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,163,95,.6);background:var(--cream);color:var(--green-deep);font-size:26px;line-height:1;cursor:pointer;z-index:2;box-shadow:0 8px 20px -8px rgba(51,47,44,.3)}
+.vnav.prev{left:-18px}.vnav.next{right:-18px}
+@media(max-width:760px){.vnav{display:none}}
+.voice{flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start;margin:0;background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 16px 40px -16px rgba(51,47,44,.2);border:1px solid rgba(201,163,95,.2)}
+@media(max-width:860px){.voice{flex-basis:82%}}
+.voice blockquote{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;margin-bottom:18px}
+.voice blockquote::before{content:"\201C";display:block;font-size:56px;line-height:.6;color:var(--gold);margin-bottom:8px}
+.voice figcaption{font-size:14px;font-weight:700;color:var(--green-deep);letter-spacing:.04em}
+.voice.placeholder{border:1.5px dashed rgba(201,163,95,.6);box-shadow:none;background:transparent}
+.voice.placeholder blockquote{color:var(--ink-soft)}
+
+
+.how{background:linear-gradient(180deg,var(--cream) 0,var(--cream-2) 100%);padding:80px 0 50px;text-align:center}
+.how .eyebrow{color:var(--gold-deep);margin-bottom:14px}
+.how-title{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.06;margin-bottom:50px}
+.how-title em{color:var(--gold-deep);font-weight:400}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1000px;margin:0 auto;position:relative}
+.how-grid::before{content:"";position:absolute;left:16%;right:16%;top:62px;border-top:1.5px dashed rgba(201,163,95,.6)}
+.hstep{position:relative;background:#fff;border:1px solid rgba(201,163,95,.22);border-radius:26px;padding:34px 26px 32px;box-shadow:0 16px 40px -18px rgba(51,47,44,.2);transition:transform .3s,box-shadow .3s}
+.hstep:hover{transform:translateY(-6px);box-shadow:0 24px 50px -18px rgba(51,47,44,.28)}
+.ico{position:relative;width:64px;height:64px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--green),var(--green-dark));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px var(--cream-2)}
+.ico svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ico i.x{position:absolute;top:-6px;right:-8px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#2a2418;font:700 13px var(--sans);display:flex;align-items:center;justify-content:center;font-style:normal}
+.hstep b{display:block;font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.1;margin-bottom:8px}
+.hstep p{color:var(--ink-soft);font-size:16px}
+@media(max-width:760px){.how-grid{grid-template-columns:1fr}.how-grid::before{display:none}}
+.plans{background:var(--cream);padding:100px 0 90px;text-align:center}
+.plans .eyebrow{color:var(--gold-deep);margin-bottom:14px}
+.plans h3{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5vw,62px);line-height:1.06;margin-bottom:46px}
+.plans h3 em{color:var(--gold-deep);font-weight:400}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;text-align:left}
+.plan{background:#fff;border:1px solid rgba(201,163,95,.25);border-radius:28px;padding:36px 32px}
+.plan h4{font-family:var(--serif);font-weight:600;font-size:32px;margin-bottom:2px}
+.plan .pr{font-weight:700;color:var(--green-deep);margin-bottom:20px}
+.plan .pr span{display:block;font-weight:400;font-size:14px;color:var(--ink-soft)}
+.plan ul{list-style:none}
+.plan li{padding:9px 0 9px 28px;position:relative;font-size:16px;border-top:1px solid rgba(0,0,0,.06)}
+.plan li::before{content:"";position:absolute;left:4px;top:17px;width:10px;height:6px;border-left:2px solid var(--gold-deep);border-bottom:2px solid var(--gold-deep);transform:rotate(-45deg)}
+.plan.pro{background:radial-gradient(120% 100% at 50% 0%,var(--green),var(--green-dark));color:var(--cream);border-color:transparent}
+.plan.pro .pr{color:var(--gold)}.plan.pro .pr span{color:rgba(253,250,245,.7)}
+.plan.pro li{border-color:rgba(255,255,255,.12)}
+.life{margin-top:20px;font-size:15px;color:rgba(253,250,245,.8)}.life b{color:var(--gold)}
+.fine{margin-top:26px;font-size:14px;color:var(--ink-soft)}
+@media(max-width:760px){.plan-grid{grid-template-columns:1fr}}
+.faq{background:var(--cream-2);padding:90px 0}
+.faq .wrap{max-width:760px}
+.faq h3{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5vw,56px);text-align:center;margin-bottom:34px}
+.faq h3 em{color:var(--gold-deep);font-weight:400}
+details{border-top:1px solid rgba(201,163,95,.5);padding:20px 4px}
+details:last-child{border-bottom:1px solid rgba(201,163,95,.5)}
+summary{cursor:pointer;list-style:none;font-family:var(--serif);font-size:25px;font-weight:500;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold-deep);font-size:28px;line-height:1;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:12px;color:var(--ink-soft);font-size:17px;max-width:620px}
+details a{color:var(--green-deep)}
+.sticky-cta{display:none}
+@media(max-width:640px){.sticky-cta{display:block;position:fixed;left:50%;bottom:14px;z-index:30;background:var(--gold);color:#2a2418;text-align:center;font-weight:700;font-size:15px;padding:10px 22px;white-space:nowrap;border-radius:999px;margin-left:0;translate:-50% 0;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.3);transform:translateY(140%);transition:transform .35s}.sticky-cta.show{transform:none}}
+
+.safe-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.safe{background:radial-gradient(130% 110% at 20% 0%,var(--green),var(--green-dark));color:var(--cream);border-radius:24px;padding:28px 24px 26px;box-shadow:0 18px 40px -20px rgba(23,55,43,.55);transition:transform .3s}
+.safe:hover{transform:translateY(-5px)}
+.sico{width:50px;height:50px;border-radius:50%;border:1px solid rgba(229,192,123,.55);background:rgba(229,192,123,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.sico svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.safe b{display:block;font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.1;margin-bottom:8px}
+.safe p{font-size:15.5px;color:rgba(253,250,245,.78)}
+@media(max-width:560px){.safe-grid{grid-template-columns:1fr}}
+
+
+@media(max-width:860px){
+ .step.has-gallery{display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 0 30px}
+ .step.has-gallery .num{order:0}
+ .step.has-gallery .gallery{order:1;display:block;position:relative;flex:none;width:58vw;max-width:260px;aspect-ratio:700/1375;margin:14px auto 0;padding:0;overflow:visible;scroll-snap-type:none}
+ .step.has-gallery .gallery figure{position:absolute;inset:0;flex:none;width:100%;opacity:0;pointer-events:none;transition:opacity .45s;margin:0}
+ .step.has-gallery .gallery figure.on{opacity:1}
+ .step.has-gallery .gallery img{width:100%!important;height:100%;aspect-ratio:auto;object-fit:cover;object-position:top}
+ .step.has-gallery .gallery figcaption{display:none}
+ .step.has-gallery .gallery{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+ .step.has-gallery .gallery.pre{opacity:0;transform:translateY(70px) scale(.94)}
+ .step.has-gallery .pick{order:2;display:flex;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;gap:8px;width:calc(100% + 48px);margin:22px -24px 0;padding:2px 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .step.has-gallery .pick::-webkit-scrollbar{display:none}
+ .step.has-gallery .pick button{flex:none}
+ .step.has-gallery .pick.more{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+ .step.has-gallery .pick.more.end{-webkit-mask-image:none;mask-image:none}
+ .step.has-gallery .pick button:first-child{margin-left:auto}
+ .step.has-gallery .pick button:last-child{margin-right:auto}
+ .step.has-gallery h2{order:3;display:block;margin:22px 0 10px;font-size:clamp(32px,9vw,40px)}
+ .step.has-gallery .lead{order:4;display:block;font-size:16.5px}
+ .step.has-gallery .subdesc{order:5;display:block;margin-top:14px;min-height:4.6em;border-left:0;padding-left:0;font-size:15.5px;color:var(--ink-soft)}
+ .step.has-gallery .num{font-size:24px}
+}
+
+/* closing */
+.closing{background:radial-gradient(110% 100% at 50% 0%,var(--green) 0%,var(--green-deep) 60%,var(--green-dark) 100%);color:var(--cream);text-align:center;padding:130px 24px 40px;position:relative;overflow:hidden}
+.closing blockquote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,5vw,60px);line-height:1.18;max-width:900px;margin:0 auto 14px}
+.closing cite{display:block;color:var(--gold);font-style:normal;letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:700;margin-bottom:44px}
+.soon{margin-top:16px;font-size:14px;color:rgba(253,250,245,.65)}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:clamp(90px,24vw,330px);line-height:.9;color:transparent;background:linear-gradient(180deg,rgba(229,192,123,.85),rgba(229,192,123,.08));-webkit-background-clip:text;background-clip:text;margin-top:90px;letter-spacing:-.02em;user-select:none}
+footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;padding:26px 0 10px;font-size:14px;color:rgba(253,250,245,.7)}
+footer a{text-decoration:none}footer a:hover{color:var(--gold)}
+.copy{font-size:13px;color:rgba(253,250,245,.5);padding-bottom:26px}
+
+@media(prefers-reduced-motion:reduce){
+  .float{animation:none}.phone.swap{animation:none}.step{opacity:1!important}
+  html{scroll-behavior:auto}
+  .w,.sub,.cta{animation:none;opacity:1;transform:none}
+  .glow,.ring,.scrollhint{animation:none}.ring{display:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  .phone img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#top"><img src="img/icon.png" alt="">Mercies</a>
+  <div class="links">
+    <a href="#inside">Inside the app</a>
+    <a href="/support">Support</a>
+    <a class="pill" href="#get">Get the app</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">A faith app for everyday life</p>
+    <h1 id="headline" aria-label="A quiet place to walk with Him.">
+      <span class="w" style="animation-delay:.2s">A</span>
+      <span class="w" style="animation-delay:.35s">quiet</span>
+      <span class="w" style="animation-delay:.5s">place</span>
+      <span class="w" style="animation-delay:.65s">to</span><br>
+      <span class="w" style="animation-delay:.85s"><em>walk</em></span>
+      <span class="w" style="animation-delay:1s"><em>with</em></span>
+      <span class="w" style="animation-delay:1.15s"><em>Him.</em></span>
+    </h1>
+    <p class="sub">Daily Scripture, guided prayer, Bible study and a private community, all in one calm place that grows with your faith.</p>
+    <div class="cta">
+      <a class="btn" id="get" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19l10-9.5L4 2.5zm11.4 8.2L6.2 2l12.2 6.9-3 1.8zm0 2.6l3 1.8L6.2 22l9.2-8.7zM19.7 9.7l2.3 1.3c.8.5.8 1.5 0 2l-2.3 1.3-3.3-2.3 3.3-2.3z"/></svg>
+        Get it on Google Play</a>
+      <small>iPhone: coming soon</small>
+    </div>
+    
+  </div>
+  <div class="peek" aria-hidden="true"><div class="fan" id="peekphone">
+      <div class="fp f-o l"><img src="img/prayerwall.webp" alt=""></div>
+      <div class="fp f-m l"><img src="img/bible.webp" alt=""></div>
+      <div class="fp f-c"><img src="img/today.webp" alt=""></div>
+      <div class="fp f-m r"><img src="img/quiz.webp" alt=""></div>
+      <div class="fp f-o r"><img src="img/blessings.webp" alt=""></div>
+    </div></div>
+</header>
+
+<section class="how">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h3 class="how-title reveal">Three small steps <em>to a quieter day.</em></h3>
+    <div class="how-grid">
+      <div class="hstep reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg></div><b>Download Mercies</b><p>Free to start, on Google Play today.</p></div>
+      <div class="hstep reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg></div><b>Pray your way</b><p>Say what’s on your heart, or open a guided prayer for morning, night or anytime.</p></div>
+      <div class="hstep reveal"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5V5.5zM12 6v13"/></svg></div><b>Rest in the Word</b><p>Receive Scripture and a prayer to keep, share, and return to.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="inside">
+  <div class="wrap story-grid">
+    <div class="stage">
+      <div class="halo"></div>
+      <div class="float"><div class="phone" id="phone"><div class="screen" id="screen">
+        <img src="img/today.webp" alt="Today screen" data-step="0" data-sub="0" class="on">
+        <img src="img/morning.webp" alt="Morning prayer screen" data-step="0" data-sub="1">
+        <img src="img/night.webp" alt="Night prayer screen" data-step="0" data-sub="2">
+        <img src="img/prayer.webp" alt="What’s on your heart screen" data-step="0" data-sub="3">
+        <img src="img/bible.webp" alt="Read screen" data-step="1" data-sub="0">
+        <img src="img/highlights.webp" alt="Highlights screen" data-step="1" data-sub="1">
+        <img src="img/plans.webp" alt="Plans screen" data-step="1" data-sub="2">
+        <img src="img/chat.webp" alt="Chat screen" data-step="1" data-sub="3">
+        <img src="img/study.webp" alt="Study screen" data-step="1" data-sub="4">
+        <img src="img/quiz.webp" alt="Quiz screen" data-step="1" data-sub="5">
+        <img src="img/memorize.webp" alt="Memorize screen" data-step="1" data-sub="6">
+        <img src="img/blessings.webp" alt="Count your blessings screen" data-step="2" data-sub="0">
+        <img src="img/story.webp" alt="My Story screen" data-step="2" data-sub="1">
+        <img src="img/prayerwall.webp" alt="Prayer Wall screen" data-step="3" data-sub="0">
+        <img src="img/groups.webp" alt="Groups screen" data-step="3" data-sub="1">
+        <img src="img/you.webp" alt="Your space screen" data-step="4" data-sub="0">
+        <img src="img/journal.webp" alt="Advanced Spiritual Journal screen" data-step="4" data-sub="1">
+        <img src="img/insights.webp" alt="Insights screen" data-step="4" data-sub="2">
+      </div></div></div>
+    </div>
+    <div class="steps">
+      <article class="step has-gallery" data-step="0">
+        <p class="num reveal">01 · Today</p>
+        <h2 class="reveal">Begin each day <em>with Scripture.</em></h2>
+        <p class="reveal lead">A verse for the morning, a quiet moment to settle, and guided prayers for morning, night, or any time your heart needs them.</p>
+        <div class="tags reveal pick"><button type="button" data-sub="0" data-desc="Your daily verse and a quiet moment before the day begins." class="sel">Today</button><button type="button" data-sub="1" data-desc="A guided morning prayer: Scripture first, then gratitude, then a gentle Amen.">Morning prayer</button><button type="button" data-sub="2" data-desc="A guided night prayer to look back on the day and rest in His faithfulness.">Night prayer</button><button type="button" data-sub="3" data-h="Tell Him &lt;em&gt;what’s on your heart.&lt;/em&gt;" data-lead="Anxious, grateful, grieving or hopeful? Say how you feel in your own words, and receive Scripture and a prayer written for that moment." data-desc="Save it, share it, or simply rest in it. You can always try a different feeling.">What’s on your heart</button></div>
+        <p class="subdesc">Your daily verse and a quiet moment before the day begins.</p>
+        <div class="gallery"><figure><img src="img/today.webp" alt="" loading="lazy"><figcaption><b>Begin each day <em>with Scripture.</em></b><span>A verse for the morning, a quiet moment to settle, and guided prayers for morning, night, or any time your heart needs them.</span></figcaption></figure><figure><img src="img/morning.webp" alt="" loading="lazy"><figcaption><b>Begin each day <em>with Scripture.</em></b><span>A verse for the morning, a quiet moment to settle, and guided prayers for morning, night, or any time your heart needs them.</span></figcaption></figure><figure><img src="img/night.webp" alt="" loading="lazy"><figcaption><b>Begin each day <em>with Scripture.</em></b><span>A verse for the morning, a quiet moment to settle, and guided prayers for morning, night, or any time your heart needs them.</span></figcaption></figure><figure><img src="img/prayer.webp" alt="" loading="lazy"><figcaption><b>Tell Him <em>what’s on your heart.</em></b><span>Anxious, grateful, grieving or hopeful? Say how you feel in your own words, and receive Scripture and a prayer written for that moment.</span></figcaption></figure></div>
+      </article>
+      <article class="step has-gallery" data-step="1">
+        <p class="num reveal">02 · Bible</p>
+        <h2 class="reveal">Read it. Study it. <em>Hold on to it.</em></h2>
+        <p class="reveal lead">Everything for your time in the Word, together in one place.</p>
+        <div class="tags reveal pick"><button type="button" data-sub="0" data-desc="Read in your favourite translation, and highlight any verse and tag it by topic." class="sel">Read</button><button type="button" data-sub="1" data-h="Every highlight, &lt;em&gt;neatly organised.&lt;/em&gt;" data-lead="Highlight any verse and it sorts itself by topic, such as healing, God’s love or comfort, so the words that mattered are easy to find again." data-desc="Open a topic and every verse you have marked is waiting for you.">Highlights</button><button type="button" data-sub="2" data-h="Read the Bible &lt;em&gt;at your own pace.&lt;/em&gt;" data-lead="Pick a plan, see today’s reading and tick it off. Come back any day and carry on." data-desc="Follow the Bible in a year, the New Testament in 90 days, the Gospels in 30, or Psalms and Proverbs in 31.">Plans</button><button type="button" data-sub="3" data-h="Ask honestly. &lt;em&gt;Answers rooted in Scripture.&lt;/em&gt;" data-lead="Bring your real questions. Every answer points back to the Word, so you can test it for yourself." data-desc="Ask about faith or the Bible, and follow the verses each answer points to.">Chat</button><button type="button" data-sub="4" data-h="Go deeper, &lt;em&gt;one topic at a time.&lt;/em&gt;" data-lead="Choose a theme like forgiveness and walk through it over several sessions, with Scripture at the centre." data-desc="Share what you are noticing as you go, and pick it up again whenever you like.">Study</button><button type="button" data-sub="5" data-h="Test what &lt;em&gt;you have learned.&lt;/em&gt;" data-lead="Short Bible quizzes that help what you read stay with you." data-desc="Gentle explanations after every answer, so you understand why.">Quiz</button><button type="button" data-sub="6" data-h="Hide His word &lt;em&gt;in your heart.&lt;/em&gt;" data-lead="Choose verses from ready-made topics and revisit them gently until they stay with you, wherever you go." data-desc="Pick passages from ready-made topics and review what is due today.">Memorize</button></div>
+        <p class="subdesc">Read in your favourite translation, and highlight any verse and tag it by topic.</p>
+        <div class="gallery"><figure><img src="img/bible.webp" alt="" loading="lazy"><figcaption><b>Read it. Study it. <em>Hold on to it.</em></b><span>Everything for your time in the Word, together in one place.</span></figcaption></figure><figure><img src="img/highlights.webp" alt="" loading="lazy"><figcaption><b>Every highlight, <em>neatly organised.</em></b><span>Highlight any verse and it sorts itself by topic, such as healing, God’s love or comfort, so the words that mattered are easy to find again.</span></figcaption></figure><figure><img src="img/plans.webp" alt="" loading="lazy"><figcaption><b>Read the Bible <em>at your own pace.</em></b><span>Pick a plan, see today’s reading and tick it off. Come back any day and carry on.</span></figcaption></figure><figure><img src="img/chat.webp" alt="" loading="lazy"><figcaption><b>Ask honestly. <em>Answers rooted in Scripture.</em></b><span>Bring your real questions. Every answer points back to the Word, so you can test it for yourself.</span></figcaption></figure><figure><img src="img/study.webp" alt="" loading="lazy"><figcaption><b>Go deeper, <em>one topic at a time.</em></b><span>Choose a theme like forgiveness and walk through it over several sessions, with Scripture at the centre.</span></figcaption></figure><figure><img src="img/quiz.webp" alt="" loading="lazy"><figcaption><b>Test what <em>you have learned.</em></b><span>Short Bible quizzes that help what you read stay with you.</span></figcaption></figure><figure><img src="img/memorize.webp" alt="" loading="lazy"><figcaption><b>Hide His word <em>in your heart.</em></b><span>Choose verses from ready-made topics and revisit them gently until they stay with you, wherever you go.</span></figcaption></figure></div>
+      </article>
+      <article class="step has-gallery" data-step="2">
+        <p class="num reveal">03 · Blessings</p>
+        <h2 class="reveal">Remember what <em>God has done.</em></h2>
+        <p class="reveal lead">Write down answered prayers and everyday blessings, and look back whenever your faith needs a lift.</p>
+        
+        <div class="tags reveal pick"><button type="button" data-sub="0" data-desc="Your blessings, gathered by month and by the names of God that met you there." class="sel">My Blessings</button><button type="button" data-sub="1" data-h="Your month, &lt;em&gt;told as a story.&lt;/em&gt;" data-lead="At the end of each month, your blessings are woven into a short story of how God showed up for you." data-desc="Pin it, share it, or read it again whenever you need to remember.">My Story</button></div>
+        <p class="subdesc">Your blessings, gathered by month and by the names of God that met you there.</p>
+        <div class="gallery"><figure><img src="img/blessings.webp" alt="" loading="lazy"><figcaption><b>Remember what <em>God has done.</em></b><span>Write down answered prayers and everyday blessings, and look back whenever your faith needs a lift.</span></figcaption></figure><figure><img src="img/story.webp" alt="" loading="lazy"><figcaption><b>Your month, <em>told as a story.</em></b><span>At the end of each month, your blessings are woven into a short story of how God showed up for you.</span></figcaption></figure></div>
+      </article>
+      <article class="step has-gallery" data-step="3">
+        <p class="num reveal">04 · Community</p>
+        <h2 class="reveal">Pray <em>together.</em></h2>
+        <p class="reveal lead">Lift others up, and be lifted up, without ever being exposed.</p>
+        <div class="tags reveal pick"><button type="button" data-sub="0" data-desc="Share a request anonymously and others pray with a tap. No names, no replies, just prayer." class="sel">Prayer Wall</button><button type="button" data-sub="1" data-h="Walk with &lt;em&gt;people you know.&lt;/em&gt;" data-lead="Start a private, invite-only group to share a reading, set a memory verse and pray through the week." data-desc="Private circles for family, friends or your church, separate from the Prayer Wall.">Groups</button></div>
+        <p class="subdesc">Share a request anonymously and others pray with a tap. No names, no replies, just prayer.</p>
+        <div class="gallery"><figure><img src="img/prayerwall.webp" alt="" loading="lazy"><figcaption><b>Pray <em>together.</em></b><span>Lift others up, and be lifted up, without ever being exposed.</span></figcaption></figure><figure><img src="img/groups.webp" alt="" loading="lazy"><figcaption><b>Walk with <em>people you know.</em></b><span>Start a private, invite-only group to share a reading, set a memory verse and pray through the week.</span></figcaption></figure></div>
+      </article>
+      <article class="step has-gallery" data-step="4">
+        <p class="num reveal">05 · You</p>
+        <h2 class="reveal">Your own <em>private space.</em></h2>
+        <p class="reveal lead">Everything you have saved, written and prayed, kept for you and no one else.</p>
+        
+        <div class="tags reveal pick"><button type="button" data-sub="0" data-desc="Your highlights, saved verses, notes and prayers, with your journal and your journey with God, all in one private place." class="sel">Your space</button><button type="button" data-sub="1" data-h="Everything you’ve written, &lt;em&gt;in one place.&lt;/em&gt;" data-lead="Search your blessings, notes, prayer requests and Bible studies together." data-desc="Filter by type and find the thought you wrote months ago.">Journal</button><button type="button" data-sub="2" data-h="See how you’re &lt;em&gt;growing.&lt;/em&gt;" data-lead="A gentle look back at your walk. Never a score, just a mirror." data-desc="Your prayer rhythm, what you read most, and the verses you return to again and again.">Insights</button></div>
+        <p class="subdesc">Your highlights, saved verses, notes and prayers, with your journal and your journey with God, all in one private place.</p>
+        <div class="gallery"><figure><img src="img/you.webp" alt="" loading="lazy"><figcaption><b>Your own <em>private space.</em></b><span>Everything you have saved, written and prayed, kept for you and no one else.</span></figcaption></figure><figure><img src="img/journal.webp" alt="" loading="lazy"><figcaption><b>Everything you’ve written, <em>in one place.</em></b><span>Search your blessings, notes, prayer requests and Bible studies together.</span></figcaption></figure><figure><img src="img/insights.webp" alt="" loading="lazy"><figcaption><b>See how you’re <em>growing.</em></b><span>A gentle look back at your walk. Never a score, just a mirror.</span></figcaption></figure></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="plans" id="plans">
+  <div class="wrap">
+    <p class="eyebrow">Free and Pro</p>
+    <h3 class="reveal">Begin free. <em>Go deeper when you’re ready.</em></h3>
+    <div class="plan-grid">
+      <div class="plan reveal">
+        <h4>Free</h4><p class="pr">Always</p>
+        <ul>
+          <li>Daily verse and guided prayers</li>
+          <li>Bible reader with 10 translations</li>
+          <li>Highlights, notes and reading plans</li>
+          <li>Prayer Wall, anonymous and free</li>
+          <li>Join groups you’re invited to</li>
+          <li>Bible chat, 5 answers a day</li>
+          <li>2 quizzes a day, and a new Bible study each week</li>
+          <li>Count your blessings (up to 25) and your monthly story</li>
+        </ul>
+      </div>
+      <div class="plan pro reveal">
+        <h4>Mercies Pro</h4><p class="pr">$4.99 / month <span>or $29.99 / year, 14-day free trial</span></p>
+        <ul>
+          <li>Everything in Free</li>
+          <li>Unlimited Bible chat, studies and quizzes</li>
+          <li>Personalized quizzes from your own highlights and notes</li>
+          <li>Memorize, with up to 12 passages at once</li>
+          <li>Create your own groups and study together</li>
+          <li>Unlimited blessings, Insights and advanced journal search</li>
+        </ul>
+        <p class="life">Or pay once: <b>$79.99 lifetime</b></p>
+      </div>
+    </div>
+    <p class="fine">Core spiritual features stay free forever. Prices in your local currency appear in the store.</p>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="wrap promise-grid">
+    <div class="promise-head">
+      <p class="eyebrow">Our promise</p>
+      <h3 class="reveal">Made to feel <em>safe.</em></h3>
+      <p class="reveal">Faith is personal. Mercies is built to protect that.</p>
+      <div class="floaters" aria-hidden="true">
+        <div class="fl f1">Please pray for my family this week.</div>
+        <div class="fl f2">Grateful for a new job. 🙏</div>
+        <div class="fl f3">Peace for a heavy heart.</div>
+        <div class="fl f4">Pray for my son’s exam tomorrow.</div>
+        <div class="fl f5">Healing for my mother.</div>
+        <div class="fl f6">Thankful for another morning.</div>
+        <div class="fl f7">Pray for our church.</div>
+        <div class="fl f8">Strength to forgive.</div>
+      </div>
+    </div>
+    <div class="safe-grid"><div class="safe reveal"><div class="sico"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><b>Private by design</b><p>Your prayers, notes and highlights stay yours.</p></div><div class="safe reveal"><div class="sico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg></div><b>An anonymous Prayer Wall</b><p>Share freely, with no name and no replies.</p></div><div class="safe reveal"><div class="sico"><svg viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-2-4-6-3-5 0M12 7c2-4 6-3 5 0"/></svg></div><b>Free to begin</b><p>Daily Scripture and prayer cost nothing.</p></div><div class="safe reveal"><div class="sico"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg></div><b>No ads, no noise</b><p>A calm space for you and God.</p></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS: replace each placeholder card with a real tester quote (keep first name + city only, with their permission). Delete unused cards. -->
+<section class="voices">
+  <div class="wrap">
+    <p class="eyebrow">In their words</p>
+    <h3 class="reveal">What people <em>are saying.</em></h3>
+    <div class="voice-wrap"><button class="vnav prev" type="button" aria-label="Previous">&#8249;</button><div class="voice-grid" id="voices">
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      <figure class="voice placeholder"><blockquote>Tester quote goes here.</blockquote><figcaption>First name · City</figcaption></figure>
+      </div><button class="vnav next" type="button" aria-label="Next">&#8250;</button></div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h3 class="reveal">Questions, <em>answered.</em></h3>
+    <details><summary>Is Mercies free?</summary><p>Yes. Daily Scripture, guided prayer, the Bible reader, the Prayer Wall and much more are free forever. Mercies Pro adds unlimited use and extra tools.</p></details>
+    <details><summary>Are my prayers private?</summary><p>Your prayers, notes and highlights are yours. Anything you post to the Prayer Wall is shared anonymously, with no name attached.</p></details>
+    <details><summary>Does it work offline?</summary><p>Chapters you have read are saved for offline reading, and you can download a full translation (the BSB) to read anywhere.</p></details>
+    <details><summary>Which Bible translations are included?</summary><p>Ten translations, so you can read in the one that feels like home and compare up to three side by side.</p></details>
+    <details><summary>Is it on iPhone?</summary><p>Mercies is on Android now, on Google Play. iPhone is coming soon.</p></details>
+    <details><summary>Can I delete my account?</summary><p>Yes, any time from inside the app, or from our <a href="/delete-account">delete account page</a>.</p></details>
+  </div>
+</section>
+
+<section class="closing">
+  <blockquote class="reveal">“Come to me, all you who are weary and burdened, and I will give you rest.”</blockquote>
+  <cite class="reveal">Matthew 11:28</cite>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">Get it on Google Play</a>
+  <p class="soon">iPhone: coming soon</p>
+  <div class="wordmark" aria-hidden="true">Mercies</div>
+  <footer>
+    <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a><a href="/delete-account">Delete account</a><a href="mailto:help@support.merciesapp.com">help@support.merciesapp.com</a>
+  </footer>
+  <p class="copy">© 2026 Mercies</p>
+</section>
+
+<a class="sticky-cta" id="sticky" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">Get Mercies on Google Play</a>
+<script>
+(function(){
+  var vg=document.getElementById('voices');
+  if(vg){document.querySelectorAll('.vnav').forEach(function(b){b.addEventListener('click',function(){vg.scrollBy({left:(b.classList.contains('next')?1:-1)*(vg.clientWidth*0.9),behavior:'smooth'})})})}
+  var fan=document.getElementById('peekphone');
+  if(fan&&window.matchMedia('(max-width:640px)').matches){var fc=fan.querySelector('.f-c');if(fc){fan.scrollLeft=fc.offsetLeft-(fan.clientWidth-fc.offsetWidth)/2}}
+  if(fan&&window.matchMedia('(max-width:640px)').matches){
+    var fps=[].slice.call(fan.querySelectorAll('.fp'));
+    var tilt=function(){var r=fan.getBoundingClientRect(),cx=r.left+r.width/2;
+      fps.forEach(function(el){var b=el.getBoundingClientRect(),t=((b.left+b.width/2)-cx)/b.width;t=Math.max(-2,Math.min(2,t));
+        var a=Math.abs(t);el.style.transform='translateY('+(a*26).toFixed(1)+'px) rotate('+(t*7).toFixed(2)+'deg) scale('+(1-a*0.07).toFixed(3)+')';el.style.zIndex=String(10-Math.round(a*3))})};
+    var tk=false;fan.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(function(){tk=false;tilt()})}},{passive:true});
+    window.addEventListener('load',tilt);tilt();setTimeout(tilt,50);
+  }
+  document.querySelectorAll('.pick').forEach(function(p){
+    var chk=function(){p.classList.toggle('more',p.scrollWidth>p.clientWidth+4);p.classList.toggle('end',p.scrollLeft+p.clientWidth>=p.scrollWidth-4)};
+    p.addEventListener('scroll',chk,{passive:true});window.addEventListener('resize',chk);setTimeout(chk,100);chk()});
+  if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.matchMedia('(max-width:860px)').matches){
+    var go=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');go.unobserve(e.target)}})},{threshold:.2});
+    document.querySelectorAll('.step.has-gallery .gallery').forEach(function(g){g.classList.add('pre');go.observe(g)})}
+  var nav=document.getElementById('nav');
+  var st=document.getElementById('sticky'),pk=document.getElementById('peekphone');
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function onScroll(){if(pk&&!rm){var p=Math.min(1,window.scrollY/(window.innerHeight*0.55));pk.style.setProperty('--p',p.toFixed(3))}else if(pk){pk.style.setProperty('--p','1')}
+    nav.classList.toggle('solid',window.scrollY>60);st.classList.toggle('show',window.scrollY>window.innerHeight*0.9&&(window.innerHeight+window.scrollY)<document.body.scrollHeight-500)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var imgs=[].slice.call(document.querySelectorAll('#screen img')),sel={};
+  function showChapter(i){
+    var k=sel[i]||0;
+    imgs.forEach(function(im){im.classList.toggle('on',+im.dataset.step===i&&+im.dataset.sub===k)});
+  }
+  function showGal(i){var st=document.querySelector('.step[data-step="'+i+'"]');if(!st)return;var k=sel[i]||0;
+    st.querySelectorAll('.gallery figure').forEach(function(f,j){f.classList.toggle('on',j===k)})}
+  [0,1,2,3,4].forEach(showGal);
+  document.querySelectorAll('.gallery').forEach(function(g){var x0=0,y0=0;
+    g.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});
+    g.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;
+      if(Math.abs(dx)<45||Math.abs(dx)<Math.abs(dy))return;
+      var st=g.closest('.step'),bs=[].slice.call(st.querySelectorAll('.pick button')),cur=bs.findIndex(function(b){return b.classList.contains('sel')});
+      var n=cur+(dx<0?1:-1);if(n>=0&&n<bs.length){bs[n].click();bs[n].scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'})}},{passive:true})});
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.pick button');if(!b)return;
+    var st=b.closest('.step'),i=+st.dataset.step;sel[i]=+b.dataset.sub;
+    st.querySelectorAll('.pick button').forEach(function(x){x.classList.toggle('sel',x===b)});
+    st.querySelector('.subdesc').textContent=b.dataset.desc;
+    var hh=st.querySelector('h2'),ll=st.querySelector('.lead');
+    if(!st.dataset.dh){st.dataset.dh=hh.innerHTML;st.dataset.dl=ll.innerHTML}
+    hh.innerHTML=b.dataset.h||st.dataset.dh;ll.innerHTML=b.dataset.lead||st.dataset.dl;
+    showChapter(i);showGal(i);
+    if(!reduce){phone.classList.remove('swap');void phone.offsetWidth;phone.classList.add('swap')}
+  });
+  var steps=[].slice.call(document.querySelectorAll('.step'));
+  var phone=document.getElementById('phone'),story=document.querySelector('.story-grid'),cur=-1;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sync(){
+    var mid=window.innerHeight/2,best=0,bd=1e9;
+    steps.forEach(function(st,i){var r=st.getBoundingClientRect();var d=Math.abs(r.top+r.height/2-mid);if(d<bd){bd=d;best=i}});
+    if(best!==cur){
+      cur=best;
+      steps.forEach(function(st,i){st.classList.toggle('active',i===best)});
+      showChapter(+steps[best].dataset.step);
+      if(!reduce){phone.classList.remove('swap');void phone.offsetWidth;phone.classList.add('swap')}
+    }
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;sync()})}},{passive:true});
+  window.addEventListener('resize',sync);sync();
+  if('IntersectionObserver' in window){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}
+    })},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(function(r){ro.observe(r)});
+  }else{document.querySelectorAll('.reveal').forEach(function(r){r.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
