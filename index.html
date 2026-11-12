@@ -31,8 +31,8 @@ a{color:inherit}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
 
 /* nav */
-nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;transition:background .3s,color .3s;color:var(--cream)}
-nav.solid{background:rgba(253,250,245,.92);backdrop-filter:blur(8px);color:var(--ink);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;transition:color .3s;color:var(--cream)}
+nav.solid{color:var(--ink)}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.01em}
 .brand img{width:30px;height:30px;border-radius:8px}
 nav .links{display:flex;gap:26px;align-items:center;font-size:15px;font-weight:600}
@@ -541,8 +541,17 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
   var nav=document.getElementById('nav');
   var st=document.getElementById('sticky'),pk=document.getElementById('peekphone');
   var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroEl=document.querySelector('.hero');
+  function navBlend(){
+    var y=window.scrollY,al=Math.min(1,y/60)*.55,t=1;
+    if(heroEl){var b=heroEl.getBoundingClientRect().bottom-nav.offsetHeight;t=Math.max(0,Math.min(1,1-b/260))}
+    var r=Math.round(31+(253-31)*t),g=Math.round(74+(250-74)*t),bl=Math.round(58+(245-58)*t);
+    nav.style.background='rgba('+r+','+g+','+bl+','+al.toFixed(3)+')';
+    nav.style.boxShadow=al>0.3?'0 1px 0 rgba(0,0,0,'+(0.05*t).toFixed(3)+')':'none';
+    nav.style.backdropFilter=nav.style.webkitBackdropFilter=al>0.05?'blur(18px) saturate(1.15)':'none';
+    nav.classList.toggle('solid',t>.5)}
   function onScroll(){if(pk&&!rm){var p=Math.min(1,window.scrollY/(window.innerHeight*0.55));pk.style.setProperty('--p',p.toFixed(3))}else if(pk){pk.style.setProperty('--p','1')}
-    nav.classList.toggle('solid',window.scrollY>60);st.classList.toggle('show',window.scrollY>window.innerHeight*0.9&&(window.innerHeight+window.scrollY)<document.body.scrollHeight-500)}
+    navBlend();st.classList.toggle('show',window.scrollY>window.innerHeight*0.9&&(window.innerHeight+window.scrollY)<document.body.scrollHeight-500)}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
   var imgs=[].slice.call(document.querySelectorAll('#screen img')),sel={};
