@@ -175,13 +175,13 @@ h1 em{font-style:italic;color:var(--gold);font-weight:400}
 .voices .eyebrow{color:var(--gold);margin-bottom:14px}
 .voices h3{font-family:var(--serif);font-weight:500;font-size:clamp(38px,5vw,64px);line-height:1.05;margin-bottom:50px;color:var(--cream)}
 .voices h3 em{color:var(--gold);font-weight:400}
-.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left}
-.voice{margin:0;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(253,250,245,.07);border:1px solid rgba(229,192,123,.28);border-radius:22px;padding:28px 26px;backdrop-filter:blur(6px)}
+.voice-grid{column-count:3;column-gap:20px;text-align:left}
+.voice{margin:0 0 20px;display:flex;flex-direction:column;justify-content:flex-start;break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;background:rgba(253,250,245,.07);border:1px solid rgba(229,192,123,.28);border-radius:22px;padding:28px 26px;backdrop-filter:blur(6px)}
 .voice blockquote{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.35;margin-bottom:20px}
 .voice blockquote::before{content:"\201C";display:block;font-size:60px;line-height:.6;color:var(--gold);margin-bottom:10px}
 .voice figcaption{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
 .voice.placeholder blockquote{color:rgba(253,250,245,.6)}
-@media(max-width:860px){.voice-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;scrollbar-width:none}.voice-grid::-webkit-scrollbar{display:none}.voice{flex:0 0 82%;scroll-snap-align:center;min-height:190px;padding:26px 24px;justify-content:flex-start}}
+@media(max-width:860px){.voice-grid{display:flex;column-count:auto;column-gap:normal;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;scrollbar-width:none}.voice-grid::-webkit-scrollbar{display:none}.voice{flex:0 0 82%;margin:0;scroll-snap-align:center;min-height:190px;padding:26px 24px;justify-content:flex-start}}
 
 
 .how{background:linear-gradient(180deg,var(--cream) 0,var(--cream-2) 100%);padding:80px 0 50px;text-align:center}
@@ -469,7 +469,10 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
       <figure class="voice"><blockquote>Mercies has been a beautiful way of staying connected with God amidst the busyness of everyday life. It gives me a moment to pause, reflect, find peace and strengthen my faith.</blockquote><figcaption>Caroline</figcaption></figure>
       <figure class="voice"><blockquote>Mercies makes it easy to actually understand what I’m reading from the Bible. I can make my personal notes, it has teaching, and I can chat and ask questions about the teaching. I mean, everything is in this app. It also lets me drop a prayer request and feel genuinely supported by others on the app.</blockquote><figcaption>Azita</figcaption></figure>
       <figure class="voice"><blockquote>I have been using the Mercies app for some time now. I really like the look and feel of the app and how personal the experience is. The morning and night prayers are my favourite part. I feel especially connected to these daily moments with God. I look forward to the daily personalized notifications. It brings a smile to my face.</blockquote><figcaption>Shailaja</figcaption></figure>
-      <figure class="voice"><blockquote>Mercies has become such a lovely part of my daily routine. The morning and night prayers are my favourite features, and I genuinely look forward to spending those few moments with God at the start and end of each day. It’s been such a blessing and has helped me be more intentional about making time for prayer. I also love how easy the app is to navigate and how thoughtfully everything is put together.</blockquote><figcaption>Sharlet</figcaption></figure>
+      <figure class="voice"><blockquote>Mercies has become such a lovely part of my daily routine. The morning and night prayers are my favourite features, and I genuinely look forward to spending those few moments with God at the start and end of each day. It’s been such a blessing and has helped me be more intentional about making time for prayer.</blockquote><figcaption>Sharlet</figcaption></figure>
+      <figure class="voice"><blockquote>The app is beautifully designed, simple, and easy to navigate, especially for new users. The morning and evening Bible verses and prayers are particularly uplifting, and the blessings, community chat, and prayers for different emotions make it feel truly comforting. It helps strengthen faith, bring peace, and remind us that we are never alone.</blockquote><figcaption>Berlyn</figcaption></figure>
+      <figure class="voice"><blockquote>What I love about the Mercies app is that it begins by asking, “How are you feeling today?” It helps me pause, reflect, and acknowledge my emotions. Based on my response, it offers a relevant Scripture passage and prayer—a beautiful way to start my day by acknowledging God and committing my thoughts and the day ahead into His hands.</blockquote><figcaption>Rahul</figcaption></figure>
+      <figure class="voice"><blockquote>I like using the Mercies app because of its calm aesthetic and style. The morning and night prayers and reminders have helped me to take time out and shift my focus out of things that worry me or occupy my mind. It’s a good way of keeping God as the first and last thing to go back to in each day.</blockquote><figcaption>Riya</figcaption></figure>
     </div>
   </div>
 </section>
