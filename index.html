@@ -78,6 +78,9 @@ h1 em{font-style:italic;color:var(--gold);font-weight:400}
 .sub{margin:30px auto 0;max-width:560px;font-size:clamp(17px,2vw,20px);color:rgba(253,250,245,.82);opacity:0;animation:rise 1s 1.5s forwards}
 .cta{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;opacity:0;animation:rise 1s 1.8s forwards}
 .cta small{display:block;width:100%;font-size:14px;color:rgba(253,250,245,.65)}
+.play-badge{display:inline-block;line-height:0;margin:8px 6px;max-width:100%}
+.play-badge img{display:block;height:56px;width:auto;max-width:100%}
+@media(max-width:400px){.play-badge img{height:48px}}
 .btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#2a2418;font-weight:700;padding:15px 28px;border-radius:999px;text-decoration:none;font-size:17px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .2s,background .2s}
 .btn:hover{transform:translateY(-2px);background:#efcf92}
 .btn svg{width:20px;height:20px}
@@ -239,6 +242,7 @@ details a{color:var(--green-deep)}
 footer{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;padding:26px 0 10px;font-size:14px;color:rgba(253,250,245,.7)}
 footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 .copy{font-size:13px;color:rgba(253,250,245,.5);padding-bottom:26px}
+.trademark{font-size:12px;color:rgba(253,250,245,.45);max-width:520px;margin:0 auto 10px;line-height:1.45;padding:0 12px}
 
 @media(prefers-reduced-motion:reduce){
   .float{animation:none}.phone.swap{animation:none}.step{opacity:1!important}
@@ -259,7 +263,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
   <div class="links">
     <a href="#inside">Inside the app</a>
     <a href="/support">Support</a>
-    <a class="pill" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">Get the app</a>
+    <a class="pill" href="https://play.google.com/store/apps/details?id=com.merciesapp.app" target="_blank" rel="noopener">Get the app</a>
   </div>
 </nav>
 
@@ -278,9 +282,9 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
     </h1>
     <p class="sub">Daily Scripture, guided prayer, Bible study and a private community, all in one calm place that grows with your faith.</p>
     <div class="cta">
-      <a class="btn" id="get" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 2.5v19l10-9.5L4 2.5zm11.4 8.2L6.2 2l12.2 6.9-3 1.8zm0 2.6l3 1.8L6.2 22l9.2-8.7zM19.7 9.7l2.3 1.3c.8.5.8 1.5 0 2l-2.3 1.3-3.3-2.3 3.3-2.3z"/></svg>
-        Get it on Google Play</a>
+      <a class="play-badge" id="get" href="https://play.google.com/store/apps/details?id=com.merciesapp.app" target="_blank" rel="noopener">
+        <img src="assets/google-play-badge.png" alt="Get it on Google Play" height="56">
+      </a>
       <small>iPhone: coming soon</small>
     </div>
     
@@ -430,7 +434,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
     <details><summary>Are my prayers private?</summary><p>Your prayers, notes and highlights are yours. Anything you post to the Prayer Wall is shared anonymously, with no name attached.</p></details>
     <details><summary>Does it work offline?</summary><p>Partly. Nine Bible translations are available offline, and the BSB can be read offline after a one-time download. Saving notes and highlights, Chat, Study and the Prayer Wall need internet.</p></details>
     <details><summary>Which Bible translations are included?</summary><p>Ten translations, so you can read in the one that feels like home and compare up to three side by side.</p></details>
-    <details><summary>Is it on iPhone?</summary><p>Mercies is on Android now, on Google Play. iPhone is coming soon.</p></details>
+    <details><summary>Is it on iPhone?</summary><p>Mercies is available on Google Play. iPhone is coming soon.</p></details>
     <details><summary>Can I delete my account?</summary><p>Yes, any time from inside the app, or from our <a href="/delete-account">delete account page</a>.</p></details>
   </div>
 </section>
@@ -438,12 +442,15 @@ footer a{text-decoration:none}footer a:hover{color:var(--gold)}
 <section class="closing">
   <blockquote class="reveal">“Come to me, all you who are weary and burdened, and I will give you rest.”</blockquote>
   <cite class="reveal">Matthew 11:28</cite>
-  <a class="btn" href="https://play.google.com/store/apps/details?id=com.merciesapp.app">Get it on Google Play</a>
+  <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.merciesapp.app" target="_blank" rel="noopener">
+    <img src="assets/google-play-badge.png" alt="Get it on Google Play" height="56">
+  </a>
   <p class="soon">iPhone: coming soon</p>
   <div class="wordmark" aria-hidden="true">Mercies</div>
   <footer>
     <a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/support">Support</a><a href="/delete-account">Delete account</a><a href="mailto:help@support.merciesapp.com">help@support.merciesapp.com</a>
   </footer>
+  <p class="trademark">Google Play and the Google Play logo are trademarks of Google LLC.</p>
   <p class="copy">© 2026 Mercies</p>
 </section>
 
